@@ -40,11 +40,38 @@ export const update = async (req, res) => {
 			user,
 		})
 	} catch (err) {
-		errorsHelper.catchErros(err, res)
+		errorsHelpers.catchErros(err, res)
+	}
+}
+
+export const setRequest = async (req, res) => {
+	try {
+		const { id } = req.authUser
+
+		let user = await User.update(
+			{
+				request: true,
+			},
+			{
+				where: {
+					id,
+				},
+			}
+		)
+
+		user = await userHelpers.getUserFindByPk(id)
+
+		res.status(200).json({
+			message: 'request made correctly',
+			user,
+		})
+	} catch (err) {
+		errorsHelpers.catchErros(err, res)
 	}
 }
 
 export default {
 	getInfo,
 	update,
+	setRequest,
 }
