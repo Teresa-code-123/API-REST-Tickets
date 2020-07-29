@@ -1,0 +1,36 @@
+{
+	"name": "api-rest-tickets",
+	"version": "1.0.0",
+	"description": "api rest with node js, express, sequelize cli and babel",
+	"main": "src/index.js",
+	"scripts": {
+		"build": "babel src --out-dir dist",
+		"dev": "nodemon src/index.js --exec babel-node",
+		"start": "node dist/index.js"
+	},
+	"author": "Roxnny A Barrios C",
+	"license": "MIT",
+	"dependencies": {
+		"@babel/polyfill": "^7.10.4",
+		"bcryptjs": "^2.4.3",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-validator": "^6.6.0",
+		"jwt-simple": "^0.5.6",
+		"moment": "^2.27.0",
+		"morgan": "^1.10.0",
+		"mysql2": "^2.1.0",
+		"sequelize": "^6.3.1"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.10.5",
+		"@babel/core": "^7.10.5",
+		"@babel/node": "^7.10.5",
+		"@babel/plugin-syntax-class-properties": "^7.10.4",
+		"@babel/preset-env": "^7.10.4",
+		"@babel/register": "^7.10.5",
+		"babel-plugin-add-module-exports": "^1.0.2",
+		"nodemon": "^2.0.4",
+		"sequelize-cli": "^6.2.0"
+	}
+}

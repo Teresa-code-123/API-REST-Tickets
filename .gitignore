@@ -1,0 +1,9 @@
+# Editor files
+.vscode
+
+# Extra folders
+node_modules
+dist
+
+# Extra files
+package-lock.json
