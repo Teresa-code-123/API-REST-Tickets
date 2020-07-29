@@ -1,5 +1,5 @@
 import { validationResult } from 'express-validator'
-import { User } from './../database'
+import { User, Role } from './../database'
 import { errorsHelpers, userHelpers } from './../helpers'
 
 export const getInfo = async (req, res) => {
@@ -70,8 +70,44 @@ export const setRequest = async (req, res) => {
 	}
 }
 
+export const getApplicants = async (req, res) => {
+	try {
+		let users = await User.findAll({
+			attributes: {
+				exclude: ['RoleId', 'roleId', 'password'],
+			},
+			include: [
+				{
+					model: Role,
+					attributes: ['id', 'name'],
+				},
+			],
+			where: { request: true },
+		})
+
+		users = await users.map((user) => {
+			return Object.assign({
+				id: user.id,
+				fullName: user.fullName,
+				email: user.email,
+				request: user.request,
+				Role: user.Role,
+				createdAt: user.createdAt,
+				updatedAt: user.updatedAt,
+			})
+		})
+
+		res.status(200).json({
+			users,
+		})
+	} catch (err) {
+		errorsHelpers.catchErros(err, res)
+	}
+}
+
 export default {
 	getInfo,
 	update,
 	setRequest,
+	getApplicants,
 }
