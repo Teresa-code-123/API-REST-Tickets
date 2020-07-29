@@ -32,4 +32,7 @@ router.put(
 	userController.update
 )
 
+// * SET THE LOGGED USER REQUEST FIELD SO THAT A TICKET CAN BE ASSIGNED AND RETURNED DATA
+router.put('/request', userController.setRequest)
+
 export default router
