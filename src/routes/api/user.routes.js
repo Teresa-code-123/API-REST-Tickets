@@ -3,6 +3,7 @@ import { check } from 'express-validator'
 
 import { userController } from './../../controllers'
 import { validatorHelpers } from '../../helpers'
+import { authMiddleware } from './../middlewares'
 
 const router = express.Router()
 
@@ -34,5 +35,12 @@ router.put(
 
 // * SET THE LOGGED USER REQUEST FIELD SO THAT A TICKET CAN BE ASSIGNED AND RETURNED DATA
 router.put('/request', userController.setRequest)
+
+// * RETURN USERS WHO ARE REQUESTING A TICKET
+router.get(
+	'/applicants',
+	[authMiddleware.isAdmin],
+	userController.getApplicants
+)
 
 export default router
