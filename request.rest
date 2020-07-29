@@ -1,2 +1,8 @@
-## TEST ROUTE
-GET http://127.0.0.1:4000/api/
+### Sign up
+POST  http://127.0.0.1:4000/api/auth/signup 
+Content-Type: application/x-www-form-urlencoded
+
+&fullName=user user
+&email=user@user.com
+&password=123456
+&confirmPassword=123456
