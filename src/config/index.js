@@ -21,4 +21,6 @@ switch (NODE_ENV) {
 		break
 }
 
+currentEnv.CRYPT_TOKEN = process.env.CRYPT_TOKEN
+
 export default currentEnv

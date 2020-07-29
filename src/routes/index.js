@@ -1,12 +1,10 @@
 import express from 'express'
 
+import { authRoutes } from './api/index'
+
 const router = express.Router()
 
-// * ROUTE TEST
-router.get('/', (req, res) => {
-	res.json({
-		message: 'Welcome to the API RESTful with NodeJs',
-	})
-})
+// * ROUTE PREFIXES
+router.use('/auth', authRoutes)
 
 export default router
