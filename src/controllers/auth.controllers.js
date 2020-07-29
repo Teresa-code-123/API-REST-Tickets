@@ -33,6 +33,43 @@ export const signUp = async (req, res) => {
 	}
 }
 
+export const logIn = async (req, res) => {
+	try {
+		validationResult(req).throw()
+
+		const { email, password } = req.body
+
+		let user = await User.findOne({
+			where: {
+				email,
+			},
+			include: [
+				{
+					model: Role,
+					attributes: ['id', 'name'],
+				},
+			],
+		})
+
+		const auth = user?.verifyPassword(password)
+
+		if (!user || !auth) {
+			return res.status(404).json({
+				message: 'verify your email and / or password',
+			})
+		}
+
+		authHelpers.resAuth({
+			res,
+			message: 'you have successfully authenticated',
+			instance: user,
+		})
+	} catch (err) {
+		errorsHelpers.catchErros(err, res)
+	}
+}
+
 export default {
 	signUp,
+	logIn,
 }
