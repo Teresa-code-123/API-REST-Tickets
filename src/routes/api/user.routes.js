@@ -1,10 +1,35 @@
 import express from 'express'
+import { check } from 'express-validator'
 
 import { userController } from './../../controllers'
+import { validatorHelpers } from '../../helpers'
 
 const router = express.Router()
 
 // * RETURN THE LOGGED USER INFORMATION
 router.get('/info', userController.getInfo)
+
+// * UPDATE AND RETURN LOGGED USER DATA
+router.put(
+	'/update',
+	[
+		check('fullName')
+			.trim()
+			.escape()
+			.notEmpty()
+			.withMessage('the fullname is required'),
+		check('email')
+			.notEmpty()
+			.withMessage('the email is required')
+			.bail()
+			.normalizeEmail()
+			.isEmail()
+			.withMessage('very short email')
+			.custom((value, { req }) => {
+				return validatorHelpers.verifyEmail(value, req.authUser.id)
+			}),
+	],
+	userController.update
+)
 
 export default router
