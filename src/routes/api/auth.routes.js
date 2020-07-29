@@ -38,4 +38,20 @@ router.post(
 	authController.signUp
 )
 
+// * THIS ROUTE ALLOWS LOGGING FROM THE APP
+router.post(
+	'/login',
+	[
+		check('email')
+			.notEmpty()
+			.withMessage('the email is required')
+			.bail()
+			.normalizeEmail()
+			.isEmail()
+			.withMessage('very short email'),
+		check('password').notEmpty().withMessage('the password is required'),
+	],
+	authController.logIn
+)
+
 export default router

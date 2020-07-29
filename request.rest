@@ -6,3 +6,10 @@ Content-Type: application/x-www-form-urlencoded
 &email=user@user.com
 &password=123456
 &confirmPassword=123456
+
+### Log In
+POST  http://127.0.0.1:4000/api/auth/login 
+Content-Type: application/x-www-form-urlencoded
+
+&email=admin@user.com
+&password=1234567890
