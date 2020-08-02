@@ -61,3 +61,8 @@ Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwicm9sZUlkI
 GET  http://127.0.0.1:4000/api/tickets/all/
 Content-Type: application/x-www-form-urlencoded
 Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwicm9sZUlkIjoxLCJyb2xlIjoiYWRtaW4iLCJmdWxsTmFtZSI6ImFkbWluIHVzZXIiLCJlbWFpbCI6ImFkbWluQHVzZXIuY29tIiwiY3JlYXRlZEF0IjoxNTk2MzIwMjkyLCJleHBpcmVkQXQiOjE1OTY0MDY2OTJ9.mFF1-PKPSiGJP_9VTClSjkK6dCbFnC_mufalzokbZbI
+
+### User auth admin get one ticket
+GET  http://127.0.0.1:4000/api/tickets/one/1
+Content-Type: application/x-www-form-urlencoded
+Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwicm9sZUlkIjoxLCJyb2xlIjoiYWRtaW4iLCJmdWxsTmFtZSI6ImFkbWluIHVzZXIiLCJlbWFpbCI6ImFkbWluQHVzZXIuY29tIiwiY3JlYXRlZEF0IjoxNTk2MzIwMjkyLCJleHBpcmVkQXQiOjE1OTY0MDY2OTJ9.mFF1-PKPSiGJP_9VTClSjkK6dCbFnC_mufalzokbZbI

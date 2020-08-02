@@ -60,4 +60,7 @@ router.delete(
 // * THIS ROUTE RETURNS ALL TICKETS CREATED
 router.get('/all', ticketController.getAll)
 
+// * THIS ROUTE RETURNS A SPECIFIC TICKET
+router.get('/one/:id', ticketController.getOne)
+
 export default router
