@@ -63,4 +63,7 @@ router.get('/all', ticketController.getAll)
 // * THIS ROUTE RETURNS A SPECIFIC TICKET
 router.get('/one/:id', ticketController.getOne)
 
+// * THIS ROUTE RETURNS THE ASSIGNED TICKETS
+router.get('/assigned', ticketController.getAssigned)
+
 export default router
