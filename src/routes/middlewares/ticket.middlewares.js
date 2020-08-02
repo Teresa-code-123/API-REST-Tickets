@@ -14,7 +14,7 @@ export const checkRelationshipUser = async (req, res, next) => {
 		if (ticket.userId !== null) {
 			return res.status(400).json({
 				message:
-					'this ticket is already assigned to a user and cannot be updated',
+					'this ticket is already assigned to a user and cannot be updated or deleted',
 			})
 		}
 
