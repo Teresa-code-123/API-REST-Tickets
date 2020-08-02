@@ -61,8 +61,31 @@ export const destroy = async (req, res) => {
 	}
 }
 
+export const getAll = async (req, res) => {
+	try {
+		let tickets = await Ticket.findAll({
+			attributes: {
+				exclude: ['UserId', 'userId'],
+			},
+			include: [
+				{
+					model: User,
+					attributes: ['id', 'email'],
+				},
+			],
+		})
+
+		res.status(200).json({
+			tickets,
+		})
+	} catch (err) {
+		errorsHelpers.catchErros(err, res)
+	}
+}
+
 export default {
 	create,
 	update,
 	destroy,
+	getAll,
 }
