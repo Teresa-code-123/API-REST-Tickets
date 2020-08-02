@@ -26,7 +26,7 @@ export default {
 				allowNull: false,
 				type: Sequelize.TEXT,
 			},
-			requested: {
+			assigned: {
 				allowNull: false,
 				defaultValue: false,
 				type: Sequelize.BOOLEAN,

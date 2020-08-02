@@ -25,7 +25,7 @@ export default (sequelize) => {
 					this.setDataValue('description', value.trim())
 				},
 			},
-			requested: {
+			assigned: {
 				type: DataTypes.BOOLEAN,
 				defaultValue: false,
 			},
