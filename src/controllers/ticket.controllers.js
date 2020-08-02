@@ -1,5 +1,5 @@
 import { validationResult } from 'express-validator'
-import { Ticket, User } from './../database'
+import { Ticket, User, sequelize } from './../database'
 import { errorsHelpers } from './../helpers'
 
 export const create = async (req, res) => {
@@ -147,6 +147,38 @@ export const getNotAssigned = async (req, res) => {
 	}
 }
 
+export const toAssign = async (req, res) => {
+	const transaction = await sequelize.transaction()
+	try {
+		validationResult(req).throw()
+
+		const { id } = req.params
+
+		const { userId } = req.body
+
+		await Ticket.update(
+			{ userId, assigned: true },
+			{ where: { id }, transaction }
+		)
+
+		await User.update(
+			{ request: false },
+			{ where: { id: userId }, transaction }
+		)
+
+		await transaction.commit()
+
+		res.status(200).json({
+			message: 'ticket correctly assigned',
+		})
+	} catch (err) {
+		if (transaction) {
+			await transaction.rollback()
+		}
+		errorsHelpers.catchErros(err, res)
+	}
+}
+
 export default {
 	create,
 	update,
@@ -155,4 +187,5 @@ export default {
 	getOne,
 	getAssigned,
 	getNotAssigned,
+	toAssign,
 }
