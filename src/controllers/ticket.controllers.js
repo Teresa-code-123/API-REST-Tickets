@@ -47,7 +47,22 @@ export const update = async (req, res) => {
 	}
 }
 
+export const destroy = async (req, res) => {
+	try {
+		const { id } = req.params
+
+		await Ticket.destroy({ where: { id } })
+
+		res.status(200).json({
+			message: `was delete correctly the ticket number ${id}`,
+		})
+	} catch (err) {
+		errorsHelper.catchErros(err, res)
+	}
+}
+
 export default {
 	create,
 	update,
+	destroy,
 }
