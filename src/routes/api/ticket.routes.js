@@ -69,4 +69,17 @@ router.get('/assigned', ticketController.getAssigned)
 // * THIS ROUTE RETURNS THE NOT ASSIGNED TICKETS
 router.get('/notassigned', ticketController.getNotAssigned)
 
+// * THIS ROUTE ALLOWS TO ASSIGN A TICKET TO A USER
+router.put(
+	'/toassign/:id',
+	[
+		check('userId')
+			.trim()
+			.escape()
+			.notEmpty()
+			.withMessage('the user id is required'),
+	],
+	ticketController.toAssign
+)
+
 export default router
