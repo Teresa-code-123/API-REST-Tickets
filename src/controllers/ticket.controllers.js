@@ -57,7 +57,7 @@ export const destroy = async (req, res) => {
 			message: `was delete correctly the ticket number ${id}`,
 		})
 	} catch (err) {
-		errorsHelper.catchErros(err, res)
+		errorsHelpers.catchErros(err, res)
 	}
 }
 
