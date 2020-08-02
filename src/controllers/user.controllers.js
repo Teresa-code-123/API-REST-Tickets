@@ -1,5 +1,5 @@
 import { validationResult } from 'express-validator'
-import { User, Role } from './../database'
+import { User, Role, Ticket } from './../database'
 import { errorsHelpers, userHelpers } from './../helpers'
 
 export const getInfo = async (req, res) => {
@@ -105,9 +105,29 @@ export const getApplicants = async (req, res) => {
 	}
 }
 
+export const getTickets = async (req, res) => {
+	try {
+		const { id } = req.authUser
+
+		let tickets = await Ticket.findAll({
+			attributes: {
+				exclude: ['UserId', 'userId'],
+			},
+			where: { userId: id },
+		})
+
+		res.status(200).json({
+			tickets,
+		})
+	} catch (err) {
+		errorsHelpers.catchErros(err, res)
+	}
+}
+
 export default {
 	getInfo,
 	update,
 	setRequest,
 	getApplicants,
+	getTickets,
 }
