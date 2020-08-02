@@ -83,9 +83,34 @@ export const getAll = async (req, res) => {
 	}
 }
 
+export const getOne = async (req, res) => {
+	try {
+		const { id } = req.params
+
+		let ticket = await Ticket.findByPk(id, {
+			attributes: {
+				exclude: ['UserId', 'userId'],
+			},
+			include: [
+				{
+					model: User,
+					attributes: ['id', 'email'],
+				},
+			],
+		})
+
+		res.status(200).json({
+			ticket,
+		})
+	} catch (err) {
+		errorsHelpers.catchErros(err, res)
+	}
+}
+
 export default {
 	create,
 	update,
 	destroy,
 	getAll,
+	getOne,
 }
