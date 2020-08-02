@@ -43,4 +43,7 @@ router.get(
 	userController.getApplicants
 )
 
+// * THIS ROUTE RETURNS ALL AUTHENTICATED USER TICKETS
+router.get('/tickets', userController.getTickets)
+
 export default router

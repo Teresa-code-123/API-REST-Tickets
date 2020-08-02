@@ -9,6 +9,10 @@ export default (sequelize) => {
 
 		static associate(models) {
 			this.belongsTo(models.Role)
+			this.hasMany(models.Ticket, {
+				foreignKey: 'userId',
+				as: 'tickets',
+			})
 		}
 	}
 
