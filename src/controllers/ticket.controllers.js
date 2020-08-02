@@ -107,10 +107,34 @@ export const getOne = async (req, res) => {
 	}
 }
 
+export const getAssigned = async (req, res) => {
+	try {
+		let tickets = await Ticket.findAll({
+			attributes: {
+				exclude: ['UserId', 'userId'],
+			},
+			include: [
+				{
+					model: User,
+					attributes: ['id', 'email'],
+				},
+			],
+			where: { assigned: true },
+		})
+
+		res.status(200).json({
+			tickets,
+		})
+	} catch (err) {
+		errorsHelpers.catchErros(err, res)
+	}
+}
+
 export default {
 	create,
 	update,
 	destroy,
 	getAll,
 	getOne,
+	getAssigned,
 }
