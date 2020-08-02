@@ -50,4 +50,11 @@ router.put(
 	ticketController.update
 )
 
+// * THIS ROUTE ALLOWS TO DELETE A TICKET IF AND ONLY IF IT HAS NOT YET BEEN ASSIGNED
+router.delete(
+	'/delete/:id',
+	[ticketMiddleware.checkRelationshipUser],
+	ticketController.destroy
+)
+
 export default router
