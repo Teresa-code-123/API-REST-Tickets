@@ -21,6 +21,8 @@ export const verifyEmail = async (value, id = 0) => {
 
 // * VERIFY THAT THE TICKET NAME IS NOT USED
 export const verifyNameTicket = async (value, id = 0) => {
+	id = parseInt(id)
+
 	const ticket = await Ticket.findOne({
 		where: {
 			name: value,
