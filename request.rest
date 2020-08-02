@@ -41,8 +41,8 @@ POST http://127.0.0.1:4000/api/tickets/create
 Content-Type: application/x-www-form-urlencoded
 Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwicm9sZUlkIjoxLCJyb2xlIjoiYWRtaW4iLCJmdWxsTmFtZSI6ImFkbWluIHVzZXIiLCJlbWFpbCI6ImFkbWluQHVzZXIuY29tIiwiY3JlYXRlZEF0IjoxNTk2MzIwMjkyLCJleHBpcmVkQXQiOjE1OTY0MDY2OTJ9.mFF1-PKPSiGJP_9VTClSjkK6dCbFnC_mufalzokbZbI
 
-&name= express
-&description= express is awezome
+&name= node
+&description= node is awezome
 
 ### User auth admin update ticket
 PUT  http://127.0.0.1:4000/api/tickets/update/2
@@ -53,6 +53,11 @@ Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwicm9sZUlkI
 &description= express is awezome
 
 ### User auth admin delete ticket
-delete  http://127.0.0.1:4000/api/tickets/delete/3
+DELETE  http://127.0.0.1:4000/api/tickets/delete/3
+Content-Type: application/x-www-form-urlencoded
+Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwicm9sZUlkIjoxLCJyb2xlIjoiYWRtaW4iLCJmdWxsTmFtZSI6ImFkbWluIHVzZXIiLCJlbWFpbCI6ImFkbWluQHVzZXIuY29tIiwiY3JlYXRlZEF0IjoxNTk2MzIwMjkyLCJleHBpcmVkQXQiOjE1OTY0MDY2OTJ9.mFF1-PKPSiGJP_9VTClSjkK6dCbFnC_mufalzokbZbI
+
+### User auth admin get all tickets
+GET  http://127.0.0.1:4000/api/tickets/all/
 Content-Type: application/x-www-form-urlencoded
 Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwicm9sZUlkIjoxLCJyb2xlIjoiYWRtaW4iLCJmdWxsTmFtZSI6ImFkbWluIHVzZXIiLCJlbWFpbCI6ImFkbWluQHVzZXIuY29tIiwiY3JlYXRlZEF0IjoxNTk2MzIwMjkyLCJleHBpcmVkQXQiOjE1OTY0MDY2OTJ9.mFF1-PKPSiGJP_9VTClSjkK6dCbFnC_mufalzokbZbI

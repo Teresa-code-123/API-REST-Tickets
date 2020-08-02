@@ -57,4 +57,7 @@ router.delete(
 	ticketController.destroy
 )
 
+// * THIS ROUTE RETURNS ALL TICKETS CREATED
+router.get('/all', ticketController.getAll)
+
 export default router
